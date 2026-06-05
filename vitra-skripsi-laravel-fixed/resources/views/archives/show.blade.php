@@ -1,0 +1,4 @@
+@extends('layouts.app')
+@section('content')
+<div class="rounded bg-white p-5 shadow"><h1 class="text-2xl font-bold">{{ $archive->title }}</h1><dl class="mt-4 grid gap-3 md:grid-cols-2"><div><dt class="text-sm text-slate-500">Mahasiswa</dt><dd>{{ $archive->student->name }}</dd></div><div><dt class="text-sm text-slate-500">Tahun</dt><dd>{{ $archive->year }}</dd></div><div><dt class="text-sm text-slate-500">Keyword</dt><dd>{{ $archive->keywords ?? '-' }}</dd></div><div><dt class="text-sm text-slate-500">Publik</dt><dd>{{ $archive->is_public ? 'Ya' : 'Tidak' }}</dd></div></dl><div class="mt-5 flex gap-3"><a class="rounded bg-indigo-600 px-4 py-2 text-white" target="_blank" href="{{ asset('storage/'.$archive->file_path) }}">Buka File Skripsi</a>@if($archive->abstract_path)<a class="rounded bg-slate-700 px-4 py-2 text-white" target="_blank" href="{{ asset('storage/'.$archive->abstract_path) }}">Buka Abstrak</a>@endif</div></div>
+@endsection

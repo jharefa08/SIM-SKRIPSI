@@ -1,0 +1,4 @@
+@extends('layouts.app')
+@section('content')
+<div class="rounded bg-white p-5 shadow"><div class="flex justify-between"><h1 class="text-2xl font-bold">Detail Pendaftaran Sidang</h1><x-status :value="$exam->status" /></div><dl class="mt-4 grid gap-3 md:grid-cols-2"><div><dt class="text-sm text-slate-500">Mahasiswa</dt><dd>{{ $exam->student->name }}</dd></div><div><dt class="text-sm text-slate-500">Jenis</dt><dd>{{ str_replace('_',' ', $exam->type) }}</dd></div><div><dt class="text-sm text-slate-500">Jadwal</dt><dd>{{ $exam->scheduled_at?->format('d/m/Y H:i') ?? '-' }}</dd></div><div><dt class="text-sm text-slate-500">Ruangan</dt><dd>{{ $exam->room ?? '-' }}</dd></div></dl><h2 class="mt-5 font-bold">Catatan</h2><p class="whitespace-pre-line">{{ $exam->notes ?: '-' }}</p>@if($exam->document_path)<a class="mt-4 inline-block text-indigo-700" target="_blank" href="{{ asset('storage/'.$exam->document_path) }}">Unduh/Lihat Dokumen</a>@endif</div>
+@endsection
