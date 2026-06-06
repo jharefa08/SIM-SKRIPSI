@@ -26,6 +26,7 @@ class ExamRegistrationController extends Controller
             'type'=>'required|in:seminar_proposal,sidang_skripsi', 'document'=>'nullable|file|mimes:pdf,doc,docx|max:8192', 'notes'=>'nullable|string'
         ]);
         if ($request->hasFile('document')) $data['document_path'] = $request->file('document')->store('exams','public');
+        unset($data['document']);
         $exam = ExamRegistration::create($data + ['student_id'=>auth()->id(), 'status'=>'diajukan']);
         foreach (User::where('role','jurusan')->get() as $jurusan) {
             Notification::create(['user_id'=>$jurusan->id,'title'=>'Pendaftaran sidang baru','message'=>auth()->user()->name.' mendaftar '.$exam->type.'.','url'=>route('exams.edit',$exam)]);
