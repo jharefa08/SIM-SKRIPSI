@@ -4,6 +4,7 @@
 <form method="POST" action="<?php echo e(isset($title) ? route('titles.update',$title) : route('titles.store')); ?>" class="rounded bg-white p-4 shadow">
 <?php echo csrf_field(); ?> <?php if(isset($title)): ?> <?php echo method_field('PUT'); ?> <?php endif; ?>
 <label class="mb-2 block font-semibold">Judul</label><input name="title" value="<?php echo e(old('title',$title->title ?? '')); ?>" class="mb-4 w-full rounded border p-2" required>
+<label class="mb-2 block font-semibold">Jumlah SKS (yang telah lulus)</label><input name="title" value="" class="mb-4 w-full rounded border p-2" required>
 <label class="mb-2 block font-semibold">Latar Belakang Singkat</label><textarea name="background" rows="7" class="mb-4 w-full rounded border p-2"><?php echo e(old('background',$title->background ?? '')); ?></textarea>
 <button class="rounded bg-indigo-600 px-4 py-2 text-white">Simpan</button>
 <a href="<?php echo e(route('titles.index')); ?>" class="ml-2 text-slate-600">Kembali</a>

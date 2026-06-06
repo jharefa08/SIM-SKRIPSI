@@ -1,12 +1,93 @@
-<!doctype html><html lang="id"><head><meta charset="utf-8"><title>Surat Penunjukan Pembimbing</title><script src="https://cdn.tailwindcss.com"></script></head>
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <title>Surat Penunjukan Dosen Pembimbing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
 <body class="bg-white p-8 text-slate-900">
-<div class="mx-auto max-w-3xl">
-    <div class="text-center"><h1 class="text-xl font-bold uppercase">Surat Penunjukan Dosen Pembimbing</h1><p>Program Studi Teknik Informatika Universitas Musamus Merauke</p></div>
-    <hr class="my-6 border-slate-900">
-    <p class="mb-4">Berdasarkan hasil persetujuan pengajuan judul skripsi, dengan ini ditetapkan:</p>
-    <table class="mb-6 w-full"><tr><td class="w-48 py-1">Mahasiswa</td><td>: {{ $title->student->name }}</td></tr><tr><td class="py-1">NIM</td><td>: {{ $title->student->identifier ?: '-' }}</td></tr><tr><td class="py-1 align-top">Judul</td><td>: {{ $title->title }}</td></tr><tr><td class="py-1">Dosen Pembimbing</td><td>: {{ $title->supervisor->name ?? '-' }}</td></tr><tr><td class="py-1">Tanggal Persetujuan</td><td>: {{ optional($title->approved_at)->format('d/m/Y') }}</td></tr></table>
-    <p>Surat ini dapat digunakan sebagai bukti digital persetujuan judul dan penunjukan dosen pembimbing.</p>
-    <div class="mt-16 flex justify-end"><div class="text-center"><p>Merauke, {{ now()->format('d/m/Y') }}</p><p>Ketua Jurusan</p><br><br><br><p class="font-bold">______________________</p></div></div>
-    <button onclick="window.print()" class="mt-8 rounded bg-indigo-600 px-4 py-2 text-white print:hidden">Download/Cetak PDF</button>
+<div class="mx-auto max-w-3xl text-[15px] leading-relaxed">
+
+    <div class="text-center font-bold uppercase">
+        <p>Kementerian Pendidikan Tinggi,</p>
+        <p>Sains, dan Teknologi</p>
+        <p>Universitas Musamus (UNMUS)</p>
+        <p>Fakultas Teknik</p>
+        <p>Jurusan Teknik Informatika</p>
+    </div>
+
+    <p class="mt-2 text-center text-sm">
+        Jl. Kamizaun Mopah Lama Merauke 99611<br>
+        Email: informatika@unmus.ac.id
+    </p>
+
+    <hr class="my-5 border-slate-900">
+
+    <p class="mb-4">Berdasarkan data di bawah ini:</p>
+
+    <table class="mb-5 w-full">
+        <tr>
+            <td class="w-32 py-1">NAMA</td>
+            <td>: {{ $title->student->name }}</td>
+        </tr>
+        <tr>
+            <td class="py-1">NPM</td>
+            <td>: {{ $title->student->identifier ?: '-' }}</td>
+        </tr>
+        <tr>
+            <td class="py-1">JURUSAN</td>
+            <td>: Teknik Informatika</td>
+        </tr>
+        <tr>
+            <td class="py-1 align-top">JUDUL</td>
+            <td>: {{ $title->title }}</td>
+        </tr>
+    </table>
+
+    <p class="mb-2">Maka dengan ini menunjuk Bapak/Ibu Dosen:</p>
+
+    <table class="mb-5 w-full">
+        <tr>
+            <td class="w-6 py-1">1.</td>
+            <td class="py-1">
+                {{ $title->supervisor->name ?? '-' }} : Sebagai Pembimbing 1
+            </td>
+        </tr>
+        <tr>
+            <td class="py-1">2.</td>
+            <td class="py-1">
+                {{ $title->supervisor2->name ?? '-' }} : Sebagai Pembimbing 2
+            </td>
+        </tr>
+    </table>
+
+    <p class="text-justify">
+        Menindaklanjuti hal tersebut bersama ini kami memohon kesediaan Bapak/Ibu
+        untuk dapat membimbing dan mengarahkan mahasiswa tersebut dalam penyusunan
+        proposalnya. Judul yang diajukan tersebut masih bersifat sementara, apabila
+        ada koreksi/perubahan terhadap judul tersebut maka dapat dilakukan dengan
+        berkoordinasi dengan Ketua Jurusan Teknik Informatika. Demikian penyampaian
+        ini, atas kerjasamanya diucapkan terima kasih.
+    </p>
+
+    <div class="mt-16 flex justify-end">
+        <div class="w-64 text-left">
+            <p>Merauke, {{ now()->format('d/m/Y') }}</p>
+            <p>Plt. Ketua Jurusan</p>
+
+            <br><br><br>
+
+            <p class="font-bold underline">Ir. Marsujitullah, S.Kom,M.T.</p>
+            <p>NIP. 198905272019031013</p>
+        </div>
+    </div>
+
+    <button onclick="window.print()"
+            class="mt-8 rounded bg-indigo-600 px-4 py-2 text-white print:hidden">
+        Download/Cetak PDF
+    </button>
+
 </div>
-</body></html>
+</body>
+</html>

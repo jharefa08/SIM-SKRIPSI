@@ -3,7 +3,7 @@
 <div class="mb-4 flex items-center justify-between">
     <div>
         <h1 class="text-2xl font-bold">Monitoring Progress Mahasiswa</h1>
-        <p class="text-sm text-slate-500">Alur sesuai flowchart: judul → bimbingan proposal → seminar proposal → bimbingan skripsi → sidang skripsi → arsip.</p>
+        <p class="text-sm text-slate-500">Alur : Pengajuan judul → bimbingan proposal → seminar proposal → bimbingan skripsi → sidang skripsi → arsip.</p>
     </div>
 </div>
 <form class="mb-4 flex gap-2">
