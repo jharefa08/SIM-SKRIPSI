@@ -28,6 +28,7 @@ class ThesisArchiveController extends Controller
         $data['student_id'] = auth()->user()->isJurusan() && $request->student_id ? $request->student_id : auth()->id();
         $data['file_path'] = $request->file('file')->store('archives','public');
         if ($request->hasFile('abstract')) $data['abstract_path'] = $request->file('abstract')->store('archives/abstracts','public');
+        unset($data['file'], $data['abstract']);
         $data['is_public'] = $request->boolean('is_public', true);
         ThesisArchive::create($data);
         return redirect()->route('archives.index')->with('success','Arsip skripsi berhasil disimpan.');
@@ -51,6 +52,7 @@ class ThesisArchiveController extends Controller
         $data = $request->validate(['title'=>'required|string|max:255','year'=>'required|digits:4','keywords'=>'nullable|string|max:255','file'=>'nullable|file|mimes:pdf|max:20000','abstract'=>'nullable|file|mimes:pdf|max:8192','is_public'=>'nullable|boolean']);
         if ($request->hasFile('file')) { if ($archive->file_path) Storage::disk('public')->delete($archive->file_path); $data['file_path']=$request->file('file')->store('archives','public'); }
         if ($request->hasFile('abstract')) { if ($archive->abstract_path) Storage::disk('public')->delete($archive->abstract_path); $data['abstract_path']=$request->file('abstract')->store('archives/abstracts','public'); }
+        unset($data['file'], $data['abstract']);
         $data['is_public'] = $request->boolean('is_public', false);
         $archive->update($data);
         return redirect()->route('archives.index')->with('success','Arsip skripsi diperbarui.');

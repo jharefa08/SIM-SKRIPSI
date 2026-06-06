@@ -35,6 +35,7 @@ class GuidanceSessionController extends Controller
             'student_note'=>'required|string', 'file'=>'nullable|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:8192'
         ]);
         if ($request->hasFile('file')) $data['file_path'] = $request->file('file')->store('guidance','public');
+        unset($data['file']);
         $guidance = GuidanceSession::create($data + ['student_id'=>auth()->id(), 'status'=>'menunggu']);
         Notification::create(['user_id'=>$guidance->supervisor_id,'title'=>'Bimbingan baru','message'=>$guidance->student->name.' mengirim catatan bimbingan.','url'=>route('guidances.edit',$guidance)]);
         return redirect()->route('guidances.index')->with('success','Bimbingan berhasil dikirim ke dosen.');
@@ -70,6 +71,7 @@ class GuidanceSessionController extends Controller
                 'student_note'=>'required|string', 'file'=>'nullable|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:8192'
             ]);
             if ($request->hasFile('file')) $data['file_path'] = $request->file('file')->store('guidance','public');
+            unset($data['file']);
             $data['status'] = 'menunggu';
             $guidance->update($data);
             Notification::create(['user_id'=>$guidance->supervisor_id,'title'=>'Bimbingan dikirim ulang','message'=>$guidance->student->name.' memperbarui catatan bimbingan.','url'=>route('guidances.edit',$guidance)]);
