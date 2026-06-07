@@ -51,4 +51,5 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role:jurusan')->group(function () {
         Route::resource('users', UserController::class)->except(['show']);
     });
+    
 });

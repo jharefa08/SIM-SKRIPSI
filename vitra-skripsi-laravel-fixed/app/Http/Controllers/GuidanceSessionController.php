@@ -101,4 +101,5 @@ class GuidanceSessionController extends Controller
         $u = auth()->user();
         abort_unless($u->isJurusan() || $guidance->student_id === $u->id || $guidance->supervisor_id === $u->id, 403);
     }
+
 }

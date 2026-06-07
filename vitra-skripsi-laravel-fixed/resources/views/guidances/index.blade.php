@@ -7,12 +7,20 @@
 
 
 @if(auth()->user()->isMahasiswa())
-    <a href="{{ route('guidances.create') }}"
-       class="rounded bg-indigo-600 px-4 py-2 text-white">
-        Tambah Bimbingan
-    </a>
-@endif
+        <div class="flex items-center gap-2">
+            {{-- Export PDF --}}
+            <a href=""
+               class="rounded bg-red-600 px-4 py-2 text-white transition hover:bg-red-700">
+                Export PDF
+            </a>
 
+            {{-- Tambah Bimbingan --}}
+            <a href="{{ route('guidances.create') }}"
+               class="rounded bg-indigo-600 px-4 py-2 text-white transition hover:bg-indigo-700">
+                Tambah Bimbingan
+            </a>
+        </div>
+@endif
 
 </div>
 
