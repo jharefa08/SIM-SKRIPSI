@@ -103,6 +103,7 @@
                             </svg>
                         </a>
 
+                        
                         {{-- Review --}}
                         @if(auth()->user()->isDosen() && auth()->id() == $g->supervisor_id)
                             <a href="{{ route('guidances.edit', $g) }}"
@@ -118,6 +119,27 @@
                                           stroke-linejoin="round"
                                           stroke-width="2"
                                           d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"/>
+                                </svg>
+                            </a>
+                        @endif
+
+                        {{-- Chat --}}
+                        @if(
+                            (auth()->user()->isMahasiswa() && auth()->id() == $g->student_id) ||
+                            (auth()->user()->isDosen() && auth()->id() == $g->supervisor_id)
+                        )
+                            <a href="{{ route('chats.show', auth()->user()->isMahasiswa() ? $g->supervisor_id : $g->student_id) }}"
+                            class="text-green-700 hover:text-green-900"
+                            title="Chat">
+                                <svg class="w-5 h-5"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M8 10h8m-8 4h5m8-2a9 9 0 1 1-4.219-7.627L21 4l-1.373 4.219A8.96 8.96 0 0 1 21 12Z"/>
                                 </svg>
                             </a>
                         @endif

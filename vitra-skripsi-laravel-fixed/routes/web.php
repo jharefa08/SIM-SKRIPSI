@@ -11,7 +11,9 @@ use App\Http\Controllers\{
     NotificationController,
     UserController,
     ProgressController,
-    SupervisionController
+    SupervisionController,
+    ChatController
+    
 };
 
 Route::get('/', fn () => redirect()->route('login'));
@@ -51,5 +53,19 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role:jurusan')->group(function () {
         Route::resource('users', UserController::class)->except(['show']);
     });
+
+    Route::get('/exams/{exam}/schedule-letter', 
+    [ExamRegistrationController::class, 'scheduleLetter'])
+    ->name('exams.schedule.letter');
+
+
+    Route::get('/chats', [ChatController::class, 'index'])
+        ->name('chats.index');
+
+    Route::get('/chats/{user}', [ChatController::class, 'show'])
+        ->name('chats.show');
+
+    Route::post('/chats/{user}', [ChatController::class, 'store'])
+        ->name('chats.store');
     
 });

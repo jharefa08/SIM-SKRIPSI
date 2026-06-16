@@ -120,7 +120,32 @@
         </div>
         <?php endif; ?>
 
+        
+        <?php if($exam->status === 'dijadwalkan'): ?>
+        <div class="mt-6 border-t pt-6">
+            <a href="<?php echo e(route('exams.schedule.letter', $exam)); ?>"
+            target="_blank"
+            class="inline-flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-white transition hover:bg-green-700">
+
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/>
+                </svg>
+
+                Download Surat Jadwal Sidang
+            </a>
+        </div>
+        <?php endif; ?>
+
+
     </div>
+
 </div>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH D:\VITRA\SIM-SKRIPSI\vitra-skripsi-laravel-fixed\resources\views/exams/show.blade.php ENDPATH**/ ?>

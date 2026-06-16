@@ -9,20 +9,28 @@
 <body class="bg-white p-8 text-slate-900">
 <div class="mx-auto max-w-3xl text-[15px] leading-relaxed">
 
-    <div class="text-center font-bold uppercase">
-        <p>Kementerian Pendidikan Tinggi,</p>
-        <p>Sains, dan Teknologi</p>
-        <p>Universitas Musamus (UNMUS)</p>
-        <p>Fakultas Teknik</p>
-        <p>Jurusan Teknik Informatika</p>
+    <!-- KOP SURAT -->
+    <div class="relative min-h-[110px]">
+
+        <img src="<?php echo e(asset('images/logo-unmus.png')); ?>"
+             alt="Logo UNMUS"
+             class="absolute left-0 top-0 h-24 w-24">
+
+        <div class="text-center font-bold uppercase">
+            <p>Kementerian Pendidikan Tinggi,</p>
+            <p>Sains, dan Teknologi</p>
+            <p>Universitas Musamus (UNMUS)</p>
+            <p>Fakultas Teknik</p>
+            <p>Jurusan Teknik Informatika</p>
+        </div>
+
+        <p class="mt-2 text-center text-sm">
+            Jl. Kamizaun Mopah Lama Merauke 99611<br>
+            Email: informatika@unmus.ac.id
+        </p>
     </div>
 
-    <p class="mt-2 text-center text-sm">
-        Jl. Kamizaun Mopah Lama Merauke 99611<br>
-        Email: informatika@unmus.ac.id
-    </p>
-
-    <hr class="my-5 border-slate-900">
+    <hr class="my-5 border-2 border-slate-900">
 
     <p class="mb-4">Berdasarkan data di bawah ini:</p>
 
@@ -73,7 +81,7 @@
 
     <div class="mt-16 flex justify-end">
         <div class="w-64 text-left">
-            <p>Merauke, <?php echo e(now()->format('d/m/Y')); ?></p>
+            <p>Merauke, <?php echo e(now()->locale('id')->translatedFormat('d F Y')); ?></p>
             <p>Plt. Ketua Jurusan</p>
 
             <br><br><br>

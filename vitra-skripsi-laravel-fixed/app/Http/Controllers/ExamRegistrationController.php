@@ -74,4 +74,9 @@ class ExamRegistrationController extends Controller
         $exam->delete();
         return redirect()->route('exams.index')->with('success','Pendaftaran sidang dihapus.');
     }
+
+        public function scheduleLetter(ExamRegistration $exam)
+    {
+        return view('exams.schedule-letter', compact('exam'));
+    }
 }

@@ -123,7 +123,7 @@
                         </a>
 
                         
-                        <a href="<?php echo e(route('supervisions.index')); ?>"
+                        <a href="<?php echo e(route('guidances.index')); ?>"
                         class="rounded bg-slate-600 px-3 py-2 text-xs font-medium text-white hover:bg-slate-700">
                             Tracking
                         </a>
