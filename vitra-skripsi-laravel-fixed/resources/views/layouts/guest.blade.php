@@ -8,32 +8,46 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="min-h-screen bg-gradient-to-br from-indigo-700 via-indigo-600 to-blue-500">
+<body class="min-h-screen bg-gradient-to-br from-[#81C1C3] via-[#74B3B5] to-[#5FA9AD]">
 
     <div class="flex min-h-screen items-center justify-center px-4 py-8">
 
         <div class="grid w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-2xl md:grid-cols-2">
 
             {{-- Bagian Kiri --}}
-            <div class="hidden bg-indigo-700 p-10 text-white md:flex md:flex-col md:justify-between">
+            <div class="hidden bg-[#81C1C3] p-10 text-white md:flex md:flex-col md:justify-between">
 
                 <div>
-                    <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-white/20 text-3xl">
-                        🎓
+
+                    <div class="mb-6 flex items-center gap-4">
+
+                        <img src="{{ asset('images/logo-unmus.png') }}"
+                             alt="Logo UNMUS"
+                             class="h-16 w-16 rounded-xl bg-white/20 p-2">
+
+                        <div>
+                            <h1 class="text-2xl font-bold">
+                                SIM Skripsi & Bimbingan
+                            </h1>
+
+                            <p class="text-sm text-white/80">
+                                Universitas Musamus
+                            </p>
+                        </div>
+
                     </div>
 
-                    <h1 class="mb-4 text-3xl font-bold leading-tight">
-                        SIM Skripsi & Bimbingan
-                    </h1>
-
-                    <p class="text-indigo-100">
+                    <p class="text-white/90">
                         Sistem informasi untuk membantu proses pengajuan judul,
-                        bimbingan, sidang, monitoring, dan arsip skripsi.
+                        bimbingan proposal, seminar proposal, bimbingan skripsi,
+                        sidang skripsi, monitoring progres mahasiswa, dan
+                        pengelolaan arsip skripsi secara terintegrasi.
                     </p>
+
                 </div>
 
-                <div class="mt-10 text-sm text-indigo-200">
-                    © {{ date('Y') }} {{ config('app.name', 'SIM Skripsi') }}
+                <div class="mt-10 text-sm text-white/80">
+                    © {{ date('Y') }} Universitas Musamus
                 </div>
 
             </div>
@@ -42,7 +56,8 @@
             <div class="p-6 sm:p-8 md:p-10">
 
                 <div class="mb-8 text-center md:text-left">
-                    <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-indigo-100 text-3xl md:mx-0">
+
+                    <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-[#DDF3F3] text-3xl md:mx-0">
                         🔐
                     </div>
 
@@ -53,6 +68,7 @@
                     <p class="mt-2 text-sm text-slate-500">
                         Silakan masuk untuk melanjutkan ke sistem.
                     </p>
+
                 </div>
 
                 @yield('content')
