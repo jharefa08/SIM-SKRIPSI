@@ -3,7 +3,7 @@
         'name' => 'vitra/sim-skripsi-bimbingan',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '8d1fe48ef5947163dc424fe10204b9bd8115dc74',
+        'reference' => '8038a33323a29e76582c73cab93c0bfb6b6fb41b',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -1289,7 +1289,7 @@
         'vitra/sim-skripsi-bimbingan' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '8d1fe48ef5947163dc424fe10204b9bd8115dc74',
+            'reference' => '8038a33323a29e76582c73cab93c0bfb6b6fb41b',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

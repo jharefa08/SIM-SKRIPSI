@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\{ExamRegistration, Notification, User};
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ExamRegistrationController extends Controller
 {
@@ -36,8 +37,23 @@ class ExamRegistrationController extends Controller
 
     public function show(ExamRegistration $exam)
     {
-        abort_unless(auth()->user()->isJurusan() || $exam->student_id === auth()->id(), 403);
+        $this->authorizeView($exam);
         return view('exams.show', compact('exam'));
+    }
+
+    public function viewDocument(ExamRegistration $exam)
+    {
+        $this->authorizeView($exam);
+
+        return Storage::disk('public')->response($this->documentPath($exam));
+    }
+
+    public function downloadDocument(ExamRegistration $exam)
+    {
+        $this->authorizeView($exam);
+        $path = $this->documentPath($exam);
+
+        return Storage::disk('public')->download($path, basename($path));
     }
 
     public function edit(ExamRegistration $exam)
@@ -78,5 +94,17 @@ class ExamRegistrationController extends Controller
         public function scheduleLetter(ExamRegistration $exam)
     {
         return view('exams.schedule-letter', compact('exam'));
+    }
+
+    private function authorizeView(ExamRegistration $exam): void
+    {
+        abort_unless(auth()->user()->isJurusan() || $exam->student_id === auth()->id(), 403);
+    }
+
+    private function documentPath(ExamRegistration $exam): string
+    {
+        abort_unless($exam->document_path && Storage::disk('public')->exists($exam->document_path), 404);
+
+        return $exam->document_path;
     }
 }

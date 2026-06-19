@@ -102,7 +102,7 @@
         <a
             class="text-indigo-700"
             target="_blank"
-            href="<?php echo e(asset('storage/' . $guidance->file_path)); ?>">
+            href="<?php echo e(route('guidances.file.view', $guidance)); ?>">
             Download
         </a>
     </p>
@@ -115,4 +115,5 @@
     </button>
 </form>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH D:\PROJECT\SKRIPSI ORANG\vitra-skripsi-laravel-fixed\resources\views/guidances/create.blade.php ENDPATH**/ ?>

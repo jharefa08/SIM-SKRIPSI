@@ -34,12 +34,18 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('guidances', GuidanceSessionController::class);
     Route::post('/guidances/{guidance}/review', [GuidanceSessionController::class, 'review'])->name('guidances.review');
+    Route::get('/guidances/{guidance}/file/view', [GuidanceSessionController::class, 'viewFile'])->name('guidances.file.view');
+    Route::get('/guidances/{guidance}/file/download', [GuidanceSessionController::class, 'downloadFile'])->name('guidances.file.download');
 
     Route::resource('exams', ExamRegistrationController::class);
     Route::post('/exams/{exam}/verify', [ExamRegistrationController::class, 'verify'])->name('exams.verify');
     Route::post('/exams/{exam}/finish', [ExamRegistrationController::class, 'finish'])->name('exams.finish');
+    Route::get('/exams/{exam}/document/view', [ExamRegistrationController::class, 'viewDocument'])->name('exams.document.view');
+    Route::get('/exams/{exam}/document/download', [ExamRegistrationController::class, 'downloadDocument'])->name('exams.document.download');
 
     Route::resource('archives', ThesisArchiveController::class);
+    Route::get('/archives/{archive}/files/{type}/view', [ThesisArchiveController::class, 'viewFile'])->name('archives.files.view');
+    Route::get('/archives/{archive}/files/{type}/download', [ThesisArchiveController::class, 'downloadFile'])->name('archives.files.download');
 
     Route::get('/progress', [ProgressController::class, 'index'])->name('progress.index');
     Route::get('/progress/{student}', [ProgressController::class, 'show'])->name('progress.show');

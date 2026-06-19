@@ -522,6 +522,7 @@ class ComposerStaticInit74ac02c36244bc53a76372fc907acf03
 
     public static $classMap = array (
         'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
+        'App\\Http\\Controllers\\ChatController' => __DIR__ . '/../..' . '/app/Http/Controllers/ChatController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\ExamRegistrationController' => __DIR__ . '/../..' . '/app/Http/Controllers/ExamRegistrationController.php',
@@ -535,6 +536,7 @@ class ComposerStaticInit74ac02c36244bc53a76372fc907acf03
         'App\\Http\\Middleware\\RoleMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/RoleMiddleware.php',
         'App\\Models\\ExamRegistration' => __DIR__ . '/../..' . '/app/Models/ExamRegistration.php',
         'App\\Models\\GuidanceSession' => __DIR__ . '/../..' . '/app/Models/GuidanceSession.php',
+        'App\\Models\\Message' => __DIR__ . '/../..' . '/app/Models/Message.php',
         'App\\Models\\Notification' => __DIR__ . '/../..' . '/app/Models/Notification.php',
         'App\\Models\\ThesisArchive' => __DIR__ . '/../..' . '/app/Models/ThesisArchive.php',
         'App\\Models\\TitleSubmission' => __DIR__ . '/../..' . '/app/Models/TitleSubmission.php',

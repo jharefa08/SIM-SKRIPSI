@@ -71,7 +71,7 @@
 
             <div class="flex flex-col gap-3 sm:flex-row">
 
-                <a href="{{ asset('storage/'.$archive->file_path) }}"
+                <a href="{{ route('archives.files.view', [$archive, 'skripsi']) }}"
                    target="_blank"
                    class="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-white transition hover:bg-indigo-700">
 
@@ -79,7 +79,7 @@
                 </a>
 
                 @if($archive->abstract_path)
-                <a href="{{ asset('storage/'.$archive->abstract_path) }}"
+                <a href="{{ route('archives.files.view', [$archive, 'abstract']) }}"
                    target="_blank"
                    class="inline-flex items-center justify-center gap-2 rounded-lg bg-slate-700 px-4 py-2 text-white transition hover:bg-slate-800">
 

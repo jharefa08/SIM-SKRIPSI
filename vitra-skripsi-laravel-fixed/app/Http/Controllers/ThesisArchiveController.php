@@ -36,8 +36,23 @@ class ThesisArchiveController extends Controller
 
     public function show(ThesisArchive $archive)
     {
-        abort_unless($archive->is_public || auth()->user()->isJurusan() || $archive->student_id === auth()->id(), 403);
+        $this->authorizeView($archive);
         return view('archives.show', compact('archive'));
+    }
+
+    public function viewFile(ThesisArchive $archive, string $type)
+    {
+        $this->authorizeView($archive);
+
+        return Storage::disk('public')->response($this->filePath($archive, $type));
+    }
+
+    public function downloadFile(ThesisArchive $archive, string $type)
+    {
+        $this->authorizeView($archive);
+        $path = $this->filePath($archive, $type);
+
+        return Storage::disk('public')->download($path, basename($path));
     }
 
     public function edit(ThesisArchive $archive)
@@ -65,5 +80,20 @@ class ThesisArchiveController extends Controller
         if ($archive->abstract_path) Storage::disk('public')->delete($archive->abstract_path);
         $archive->delete();
         return redirect()->route('archives.index')->with('success','Arsip skripsi dihapus.');
+    }
+
+    private function authorizeView(ThesisArchive $archive): void
+    {
+        abort_unless($archive->is_public || auth()->user()->isJurusan() || $archive->student_id === auth()->id(), 403);
+    }
+
+    private function filePath(ThesisArchive $archive, string $type): string
+    {
+        abort_unless(in_array($type, ['skripsi', 'abstract'], true), 404);
+
+        $path = $type === 'abstract' ? $archive->abstract_path : $archive->file_path;
+        abort_unless($path && Storage::disk('public')->exists($path), 404);
+
+        return $path;
     }
 }

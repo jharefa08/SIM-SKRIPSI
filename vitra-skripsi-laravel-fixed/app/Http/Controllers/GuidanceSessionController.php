@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\{GuidanceSession, User, TitleSubmission, Notification};
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GuidanceSessionController extends Controller
 {
@@ -45,6 +46,21 @@ class GuidanceSessionController extends Controller
     {
         $this->authorizeView($guidance);
         return view('guidances.show', compact('guidance'));
+    }
+
+    public function viewFile(GuidanceSession $guidance)
+    {
+        $this->authorizeView($guidance);
+
+        return Storage::disk('public')->response($this->filePath($guidance));
+    }
+
+    public function downloadFile(GuidanceSession $guidance)
+    {
+        $this->authorizeView($guidance);
+        $path = $this->filePath($guidance);
+
+        return Storage::disk('public')->download($path, basename($path));
     }
 
     public function edit(GuidanceSession $guidance)
@@ -100,6 +116,13 @@ class GuidanceSessionController extends Controller
     {
         $u = auth()->user();
         abort_unless($u->isJurusan() || $guidance->student_id === $u->id || $guidance->supervisor_id === $u->id, 403);
+    }
+
+    private function filePath(GuidanceSession $guidance): string
+    {
+        abort_unless($guidance->file_path && Storage::disk('public')->exists($guidance->file_path), 404);
+
+        return $guidance->file_path;
     }
 
 }
